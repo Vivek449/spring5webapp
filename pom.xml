@@ -60,7 +60,16 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<useFile>false</useFile>
+				</configuration>
+			</plugin>
 		</plugins>
+
+
 	</build>
 
 	<repositories>
@@ -100,6 +109,8 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+
+
 
 
 </project>
