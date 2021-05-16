@@ -9,6 +9,8 @@ import guru.springframework.spring5webapp.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import javax.xml.bind.SchemaOutputResolver;
+
 @Component
 public class BootStrapData implements CommandLineRunner {
     private final AuthorRepository authorRepository;
@@ -53,11 +55,19 @@ public class BootStrapData implements CommandLineRunner {
         publisher.setAddressLine1(" Chandni Chauk");
         publisher.setZip("843126");
 
-        publisherRepository.save(publisher);
 
+
+        elevenMinutes.setPublisher(publisher);
+        publisher.getBooks().add(elevenMinutes);
+
+        noEJB.setPublisher(publisher);
+        publisher.getBooks().add(noEJB);
+
+        publisherRepository.save(publisher);
 
         System.out.println("Started in Bootstrap");
         System.out.println("Number of books "+ bookRepository.count());
-        System.out.println("Number of pulishers "+ publisherRepository.count());
+        System.out.println("Number of publishers "+ publisherRepository.count());
+        System.out.println("Number of books publisher has "+ publisher.getBooks().size());
     }
 }
